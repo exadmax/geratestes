@@ -1,6 +1,6 @@
 # GeraTestes
 
-Aplicacao feita em flutter que gera dados para teste.
+Aplicação feita em flutter que gera dados para teste.
 
 ## Descrição
 

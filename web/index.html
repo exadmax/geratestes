@@ -5,7 +5,7 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="Aplicacao feita em flutter que gera dados para teste.">
+  <meta name="description" content="Aplicação feita em flutter que gera dados para teste.">
 
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -18,32 +18,6 @@
 
   <title>GeraTestes</title>
   <link rel="manifest" href="manifest.json">
-
-  <script>
-    var serviceWorkerVersion = null;
-    var scriptLoaded = false;
-    function loadMainDartJs() {
-      if (scriptLoaded) {
-        return;
-      }
-      scriptLoaded = true;
-      var scriptTag = document.createElement('script');
-      scriptTag.src = 'flutter.js';
-      scriptTag.type = 'application/javascript';
-      document.body.append(scriptTag);
-
-      scriptTag.onload = function() {
-        _flutter.loader.load();
-      }
-    }
-
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function () {
-        var serviceWorkerUrl = 'flutter_service_worker.js?v=' + serviceWorkerVersion;
-        navigator.serviceWorker.register(serviceWorkerUrl);
-      });
-    }
-  </script>
 </head>
 <body>
   <script src="flutter_bootstrap.js" async></script>
