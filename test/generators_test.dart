@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:geratestes/main.dart';
+import 'package:geratestes/services/document_generator.dart';
+import 'package:geratestes/services/person_generator.dart';
 
 void main() {
   group('DocumentGenerator', () {
