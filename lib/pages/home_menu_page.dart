@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/menu_card.dart';
 import 'cnpj_check_page.dart';
 import 'cnpj_generator_page.dart';
 import 'cpf_check_page.dart';
 import 'cpf_generator_page.dart';
 import 'person_generator_page.dart';
+import 'rg_check_page.dart';
+import 'rg_generator_page.dart';
 
 class HomeMenuPage extends StatelessWidget {
   const HomeMenuPage({super.key});
@@ -17,57 +18,124 @@ class HomeMenuPage extends StatelessWidget {
         title: const Text('Geratestes'),
         centerTitle: true,
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          MenuCard(
-            title: 'Gerador de CPF',
-            subtitle: 'Gere CPFs válidos com padrão brasileiro',
-            icon: Icons.badge_outlined,
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => const CpfGeneratorPage()),
-            ),
-          ),
-          MenuCard(
-            title: 'Gerador de CNPJ',
-            subtitle: 'Gere CNPJs válidos com padrão brasileiro',
-            icon: Icons.apartment_outlined,
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => const CnpjGeneratorPage()),
-            ),
-          ),
-          MenuCard(
-            title: 'Checagem de CPF',
-            subtitle: 'Valide CPFs informados',
-            icon: Icons.verified_outlined,
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => const CpfCheckPage()),
-            ),
-          ),
-          MenuCard(
-            title: 'Checagem de CNPJ',
-            subtitle: 'Valide CNPJs informados',
-            icon: Icons.domain_verification_outlined,
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => const CnpjCheckPage()),
-            ),
-          ),
-          MenuCard(
-            title: 'Gerador de Pessoa Física',
-            subtitle: 'Dados completos para testes',
-            icon: Icons.person_outline,
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (_) => const PersonGeneratorPage(),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Theme.of(context).primaryColor,
+              ),
+              child: Row(
+                children: [
+                  Image.asset(
+                    'img/icon.png',
+                    width: 48,
+                    height: 48,
+                  ),
+                  const SizedBox(width: 12),
+                  const Text(
+                    'Geratestes',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
               ),
             ),
+            ListTile(
+              leading: const Icon(Icons.badge_outlined),
+              title: const Text('Gerador de CPF'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const CpfGeneratorPage()),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.apartment_outlined),
+              title: const Text('Gerador de CNPJ'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const CnpjGeneratorPage()),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.verified_outlined),
+              title: const Text('Checagem de CPF'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const CpfCheckPage()),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.badge),
+              title: const Text('Gerador de RG'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const RgGeneratorPage()),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.verified),
+              title: const Text('Checagem de RG'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const RgCheckPage()),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.domain_verification_outlined),
+              title: const Text('Checagem de CNPJ'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const CnpjCheckPage()),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.person_outline),
+              title: const Text('Gerador de Pessoa Física'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const PersonGeneratorPage(),
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+      body: Center(
+        child: Opacity(
+          opacity: 0.6,
+          child: Image.asset(
+            'img/icon.png',
+            width: MediaQuery.of(context).size.width * 0.5,
+            fit: BoxFit.contain,
           ),
-        ],
+        ),
       ),
     );
   }
