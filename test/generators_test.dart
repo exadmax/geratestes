@@ -1,12 +1,12 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:geratestes/services/document_generator.dart';
-import 'package:geratestes/services/person_generator.dart';
+import 'package:geratestes/services/document_generator_service.dart';
+import 'package:geratestes/services/person_generator_service.dart';
 
 void main() {
-  group('DocumentGenerator', () {
+  group('DocumentGeneratorService', () {
     test('gera CPF valido e formatado', () {
-      final generator = DocumentGenerator();
-      final cpf = generator.generateCpf();
+      final generator = DocumentGeneratorService();
+      final cpf = generator.generateCpf(formatted: true);
 
         expect(RegExp(r'^\d{3}\.\d{3}\.\d{3}-\d{2}$').hasMatch(cpf),
           isTrue);
@@ -14,8 +14,8 @@ void main() {
     });
 
     test('gera CNPJ valido e formatado', () {
-      final generator = DocumentGenerator();
-      final cnpj = generator.generateCnpj();
+      final generator = DocumentGeneratorService();
+      final cnpj = generator.generateCnpj(formatted: true);
 
       expect(RegExp(r'^\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2}$')
           .hasMatch(cnpj), isTrue);
@@ -23,7 +23,7 @@ void main() {
     });
 
     test('validador de CPF rejeita entradas invalidas', () {
-      final generator = DocumentGenerator();
+      final generator = DocumentGeneratorService();
 
       expect(generator.isValidCpf(''), isFalse);
       expect(generator.isValidCpf('111.111.111-11'), isFalse);
@@ -32,7 +32,7 @@ void main() {
     });
 
     test('validador de CNPJ rejeita entradas invalidas', () {
-      final generator = DocumentGenerator();
+      final generator = DocumentGeneratorService();
 
       expect(generator.isValidCnpj(''), isFalse);
       expect(generator.isValidCnpj('00.000.000/0000-00'), isFalse);
@@ -41,9 +41,9 @@ void main() {
     });
   });
 
-  group('PersonGenerator', () {
+  group('PersonGeneratorService', () {
     test('gera pessoa fisica com campos validos', () {
-      final generator = PersonGenerator();
+      final generator = PersonGeneratorService();
       final person = generator.generate();
 
       expect(person.firstName.isNotEmpty, isTrue);
@@ -58,7 +58,7 @@ void main() {
       expect(person.complement.isNotEmpty, isTrue);
       expect(RegExp(r'^\d{5}-\d{3}$').hasMatch(person.cep), isTrue);
 
-      final generatorDoc = DocumentGenerator();
+      final generatorDoc = DocumentGeneratorService();
       expect(generatorDoc.isValidCpf(person.cpf), isTrue);
     });
   });
